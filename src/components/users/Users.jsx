@@ -1,53 +1,59 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import axios from "axios";
+import { useEffect } from "react";
 import styled from "styled-components";
 
+const url = "https://jsonplaceholder.typicode.com/users";
+
 const Users = () => {
-	const [tasks, setTasks] = useState([]);
+	const [todo, setTodo] = useState([]);
+	console.log(todo);
+
+	const getTodos = async () => {
+		const response = await axios.get(url);
+		setTodo(response.data);
+	};
+	console.log(getTodos);
 
 	useEffect(() => {
-		fetch(" https://jsonplaceholder.typicode.com/users")
-			.then((response) => response.json())
-			.then((data) => {
-				setTasks(data);
-			});
+		getTodos();
 	}, []);
-
 	return (
 		<div>
-			<UserPages>
-				{tasks.map((item) => (
-					<UserCard key={item.id}>
-						<h3>{item.name}</h3>
-						<p>
-							{" "}
-							<SpnEmail>Email:</SpnEmail>
-							{item.email}
-						</p>
-						<p>
-							<SpnEmail>Website:</SpnEmail>
-							{item.website}
-						</p>
-					</UserCard>
-				))}
-			</UserPages>
+			<div className="container">
+				<Content>
+					{todo.map((item) => (
+						<Cards key={item.id}>
+							<h2>{item.name}</h2>
+							<p>{item.username}</p>
+							<p>
+								<span>Email:</span>
+								{item.email}
+							</p>
+							<p>
+								<span>Website:</span>
+								{item.website}
+							</p>
+						</Cards>
+					))}
+				</Content>
+			</div>
 		</div>
 	);
 };
 
 export default Users;
 
-const UserPages = styled.div`
+const Content = styled.div`
 	display: flex;
-	gap: 50px;
+	justify-content: center;
+	align-items: center;
 	flex-wrap: wrap;
+	gap: 10px;
+	margin-top: 20px;
 `;
-const UserCard = styled.div`
-	width: 300px;
-	height: 80px;
-	margin: 10px;
-	box-shadow: 1px 5px 5px #0000005c;
-`;
-const SpnEmail = styled.span`
-	font-size: 15px;
-	font-weight: 600;
+
+const Cards = styled.div`
+	border: 1px solid;
+	border-radius: 5px;
 `;

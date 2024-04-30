@@ -3,7 +3,7 @@ import { useState } from "react";
 import Users from "../../users/Users";
 import Admin from "../../admin/Admin";
 import styled from "styled-components";
-// import RickAndMorty from "../../rickAndMorty/RickAndMorty";
+import RickAndMorty from "../../rickAndMorty/RickAndMorty";
 
 const Header = () => {
 	const [tasks, setTasks] = useState("home");
@@ -34,7 +34,7 @@ const Header = () => {
 			</div>
 			{tasks === "home" && <Users />}
 			{tasks === "admin" && <Admin />}
-			{/* {tasks === "Rick and Morty" && <RickAndMorty />} */}
+			{tasks === "Rick and Morty" && <RickAndMorty />}
 		</header>
 	);
 };
