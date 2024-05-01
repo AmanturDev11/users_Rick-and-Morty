@@ -1,12 +1,11 @@
-import NewForum from './components/newForum/NewForum'
+import NewForum from "./components/newForum/NewForum";
 
 function App() {
-
-  return (
-    <>
-    <NewForum />
-    </>
-  )
+	return (
+		<>
+			<NewForum />
+		</>
+	);
 }
 
-export default App
+export default App;

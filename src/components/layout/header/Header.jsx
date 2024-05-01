@@ -6,9 +6,9 @@ import styled from "styled-components";
 import RickAndMorty from "../../rickAndMorty/RickAndMorty";
 
 const Header = () => {
-	const [tasks, setTasks] = useState("home");
+	const [сondition, setСondition] = useState("home");
 	const handleClick = (page) => {
-		setTasks(page);
+		setСondition(page);
 	};
 
 	return (
@@ -32,9 +32,9 @@ const Header = () => {
 					</nav>
 				</Content>
 			</div>
-			{tasks === "home" && <Users />}
-			{tasks === "admin" && <Admin />}
-			{tasks === "Rick and Morty" && <RickAndMorty />}
+			{сondition === "home" && <Users />}
+			{сondition === "admin" && <Admin />}
+			{сondition === "Rick and Morty" && <RickAndMorty />}
 		</header>
 	);
 };
